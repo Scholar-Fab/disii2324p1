@@ -8,13 +8,13 @@
     <h1>Info sur le joueur</h1>
     <ul>
         {% for joueur in listeJoueurs %}
-            <li>{{ joueur.prenom }} / {{ joueur.email }}</li>
-            <ul>
-                {% for v in joueur.voiture %}
-                    <li>{{ v.marque }} / {{ v.modele }}</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}    
+        <li><a href="{{ path("infoJoueur", {id: joueur.id}) }}">{{ joueur.prenom }} / {{ joueur.email }}</a></li>
+        <ul>
+            {% for v in joueur.voiture %}
+            <li>{{ v.marque }} / {{ v.modele }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
     </ul>
 
 

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Joueur;
+use App\Form\JoueurType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,5 +46,21 @@ class HomeController extends AbstractController
         ]);
     }
 
-    
+    #[Route('/addjoueur', name: 'addjoueur')]
+    public function addJoueur(EntityManagerInterface $manager, Request $request): Response
+    {
+        $joueur = new Joueur();
+        $form = $this->createForm(JoueurType::class, $joueur);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $joueur = $form->getData();
+            $manager->persist($joueur);
+            $manager->flush();
+            return $this->redirectToRoute('listeJoueurs');
+        }
+        return $this->render('home/addJoueur.html.twig', [
+            "form" => $form->createView()
+        ]);
+    }
 }
