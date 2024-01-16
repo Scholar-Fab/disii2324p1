@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info joueur{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Info sur le joueur</h1>
+    <ul>
+        {% for joueur in listeJoueurs %}
+            <li>{{ joueur.prenom }} / {{ joueur.email }}</li>
+            <ul>
+                {% for v in joueur.voiture %}
+                    <li>{{ v.marque }} / {{ v.modele }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}    
+    </ul>
+
+
+</div>
+{% endblock %}

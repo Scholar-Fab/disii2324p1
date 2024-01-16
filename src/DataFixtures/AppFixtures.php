@@ -25,6 +25,18 @@ class AppFixtures extends Fixture
         $joueur1->addVoiture($voiture1);
         $manager->persist($joueur1);
 
+        $voiture2 = new Voiture();
+        $voiture2->setCouleur('Blanche');
+        $voiture2->setMarque('Peugeot');
+        $voiture2->setModele('206');
+        $voiture2->setHybride(false);
+        $manager->persist($voiture2);
+        $joueur2 = new Joueur();
+        $joueur2->setPrenom("Sandrine")
+            ->setEmail("sandrine.lebaron@scholarfab.com");
+        $joueur2->addVoiture($voiture2);
+        $manager->persist($joueur2);
+
         $manager->flush();
     }
 }
