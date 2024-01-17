@@ -16,7 +16,15 @@ class JoueurType extends AbstractType
     {
         $builder
             ->add('prenom')
-            ->add('email')            
+            ->add('email')
+            ->add('voiture', CollectionType::class, [
+                'entry_type' => VoitureType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'label' => false
+            ])            
             ->add('Envoyer', SubmitType::class)
         ;
     }

@@ -21,7 +21,7 @@ class Joueur
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\OneToMany(mappedBy: 'joueur', targetEntity: Voiture::class)]
+    #[ORM\OneToMany(mappedBy: 'joueur', targetEntity: Voiture::class, cascade: ['persist'])]
     private Collection $voiture;
 
     public function __construct()
