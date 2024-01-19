@@ -34,7 +34,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/listeJoueurs', name: 'listeJoueurs')]
+    #[Route('/listejoueurs', name: 'listeJoueurs')]
     public function listeJoueurs(EntityManagerInterface $manager): Response
     {
         $joueurRepo = $manager->getRepository(Joueur::class);
